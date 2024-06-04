@@ -38,7 +38,6 @@ const Newarrivals = () => {
         <>
             <Container>
                 <h2 className='text-[#262626] font-sans text-[36px] font-bold'>New Arrivals</h2>
-                <h2>hello</h2>
                 <Slider {...settings}>
                     {data.map((item) => (
                         <Link to="/Products"><ArrivalsItem item={item} /></Link>

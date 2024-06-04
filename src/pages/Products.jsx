@@ -33,6 +33,17 @@ const Products = () => {
         setCurrentpage(pageNumber + 1);
     }
 
+    let prev = () => {
+        if (currentpage > 1) {
+            setCurrentpage((state) => state - 1)
+        }
+    }
+    let next = () => {
+        if (currentpage < pageNumber.length) {
+            setCurrentpage((state) => state + 1)
+        }
+    }
+
 
     return (
         <section className='pt-[120px]'>
@@ -129,7 +140,7 @@ const Products = () => {
                     </div>
                 </Flex>
                 <div className="text-center pb-[20px]">
-                    <PaginationArea pageNumber={pageNumber} paginate={paginate} />
+                    <PaginationArea pageNumber={pageNumber} paginate={paginate} currentpage={currentpage} prev={prev} next={next}/>
                 </div>
             </Container>
         </section>
