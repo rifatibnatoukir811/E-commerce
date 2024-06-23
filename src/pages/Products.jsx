@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Container from '../components/Container'
 import Flex from '../components/Flex'
 import Post from '../components/pagination/Post.jsx'
@@ -17,6 +17,8 @@ const Products = () => {
 
     let [currentpage, setCurrentpage] = useState(1)
     let [perpage, setPerpage] = useState(9)
+    let [catshow, setCatShow] = useState(false)
+    let [Category, setCategory] = useState([])
 
     let lastpage = currentpage * perpage
     let fristpage = lastpage - perpage
@@ -44,6 +46,17 @@ const Products = () => {
         }
     }
 
+    useEffect(() => {
+        setCategory([...new Set(data.map((item) => item.category))
+        ])
+    }, [data])
+
+    let handleSubcata = (item) =>{
+        console.log(item);
+    }
+
+
+
 
     return (
         <section className='pt-[120px]'>
@@ -56,44 +69,14 @@ const Products = () => {
                     <div className="w-1/6 pt-[126px] pb-[60px]">
                         <div className="gap-x-[20px]">
                             <div className="">
-                                <h2 className='font-sans lg:text-[17px] text-[12px] font-bold text-[#262626] lg:pb-6 py-2 '>Shop by Category</h2>
-                                <ul >
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>Category 1</li>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>Category 1</li>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>Category 1</li>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>Category 1</li>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>Category 1</li>
-                                </ul>
-                            </div>
-                            <div className="">
-                                <h2 className='font-sans lg:text-[17px] mt-3 text-[12px] font-bold text-[#262626] lg:py-6 py-2 '>Shop by Color</h2>
-                                <ul>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>Color 1</li>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>Color 1</li>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>Color 1</li>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>Color 1</li>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>Color 1</li>
-                                </ul>
-                            </div>
-                            <div className="">
-                                <h2 className='font-sans lg:text-[17px] mt-3 text-[12px] font-bold text-[#262626] lg:py-6 py-2 '>Shop by Brand</h2>
-                                <ul>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>Brand 1</li>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>Brand 1</li>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>Brand 1</li>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>Brand 1</li>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>Brand 1</li>
-                                </ul>
-                            </div>
-                            <div className="">
-                                <h2 className='font-sans lg:text-[17px] mt-3 text-[12px] font-bold text-[#262626] lg:py-6 py-2 '>Shop by Price</h2>
-                                <ul>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>$0.00 - $9.99</li>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>$10.00 - $19.99</li>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>$20.00 - $29.99</li>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>$30.00 - $39.99</li>
-                                    <li className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>$40.00 - $69.99</li>
-                                </ul>
+                                <h2 onClick={() => setCatShow(!catshow)} className='font-sans lg:text-[17px] text-[12px] font-bold text-[#262626] lg:pb-6 py-2 '>Shop by Category</h2>
+                                {catshow &&
+                                    <ul >
+                                        {Category.map((item) => (
+                                            <li onClick={()=>handleSubcata(item)} className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>{item}</li>
+                                        ))}
+                                    </ul>
+                                }
                             </div>
 
                         </div>
@@ -140,7 +123,7 @@ const Products = () => {
                     </div>
                 </Flex>
                 <div className="text-center pb-[20px]">
-                    <PaginationArea pageNumber={pageNumber} paginate={paginate} currentpage={currentpage} prev={prev} next={next}/>
+                    <PaginationArea pageNumber={pageNumber} paginate={paginate} currentpage={currentpage} prev={prev} next={next} />
                 </div>
             </Container>
         </section>

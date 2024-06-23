@@ -10,9 +10,9 @@ import { CiShoppingCart } from "react-icons/ci";
 const ArrivalsItem = ({ item }) => {
     return (
         <div className="">
-            <div className="lg:w-[99%] w-full px-4 py-5 shadow-lg">
+            <div className="lg:w-[98%] w-full px-4 py-5">
                 <div className="relative group overflow-hidden cursor-pointer">
-                    <img src={item.thumbnail} className='h-[376px] w-[376px]' alt="" />
+                    <img src={item.thumbnail} className='lg:h-[376px] lg:w-[376px]' alt="" />
                     <div className="bg-white absolute left-0 h-[130px] duration-700 ease-in-out bottom-[-130px] w-full group-hover:bottom-[0px] flex items-center justify-end">
                         <ul className='pr-5'>
                             <li className='flex justify-end items-center gap-x-4 font-sans text-[16px]'>Add to Wish List<CiHeart /></li>
@@ -20,10 +20,17 @@ const ArrivalsItem = ({ item }) => {
                             <li className='flex justify-end items-center gap-x-4 font-sans text-[16px]'>Add to Cart<CiShoppingCart /></li>
                         </ul>
                     </div>
+                    <div className="">
+                        <p className='text-[#26262669] absolute left-4  top-[25px] lg:py-[5px] lg:px-[10px] bg-black text-white font-sans lg:text-[10px] font-bold'>{item.discountPercentage}% off</p>
+                    </div>
                 </div>
-                <div className="">
-                    <h2 className='flex justify-between pt-[25px] pb-[14px] text-[#262626] font-sans text-[16px] font-bold'>{item.title}<span className='text-[#26262689] font-sans text-[16px] font-bold'>${item.price}</span></h2>
-                    <p className='text-[#26262669] font-sans text-[16px] font-bold'>Discount - {item.discountPercentage}%</p>
+                <div className="lg:flex justify-between pt-3">
+                    <div className="">
+                        <h2 className='text-[#262626] font-sans text-[16px] font-bold'>{item.title}</h2>
+                    </div>
+                    <div className="">
+                        <span className='text-[#26262689] font-sans text-[16px] font-bold'>${item.price}</span>
+                    </div>
                 </div>
             </div>
         </div>
