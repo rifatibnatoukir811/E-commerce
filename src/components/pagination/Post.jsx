@@ -3,16 +3,28 @@ import { Link } from 'react-router-dom';
 import ArrivalsItem from '../ArrivalsItem.jsx';
 
 
-const Post = ({allData}) => {
+const Post = ({ allData, categorySearchfilter }) => {
     return (
         <>
-            {allData.map((item) => (
-                <div className="w-[32%] flex justify-between">
-                    <Link to={`/Products/${item.id}`}>
-                        <ArrivalsItem item={item} />
-                    </Link>
-                </div>
-            ))}
+            {categorySearchfilter.length > 0 ?
+                categorySearchfilter.map((item) => (
+                    <div className="w-[32%] flex justify-between">
+                        <Link to={`/Products/${item.id}`}>
+                            <ArrivalsItem item={item} />
+                        </Link>
+                    </div>
+                ))
+                :
+                allData.map((item) => (
+                    <div className="w-[32%] flex justify-between">
+                        <Link to={`/Products/${item.id}`}>
+                            <ArrivalsItem item={item} />
+                        </Link>
+                    </div>
+                ))
+
+            }
+
         </>
     )
 }

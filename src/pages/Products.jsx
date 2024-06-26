@@ -19,6 +19,7 @@ const Products = () => {
     let [perpage, setPerpage] = useState(9)
     let [catshow, setCatShow] = useState(false)
     let [Category, setCategory] = useState([])
+    let [categorySearchfilter, setCategorySearchfilter] = useState([])
 
     let lastpage = currentpage * perpage
     let fristpage = lastpage - perpage
@@ -27,7 +28,7 @@ const Products = () => {
 
     let pageNumber = []
 
-    for (let i = 0; i < Math.ceil(data.length / perpage); i++) {
+    for (let i = 0; i < Math.ceil(categorySearchfilter.length > 0 ? categorySearchfilter : data.length / perpage); i++) {
         pageNumber.push(i)
     }
 
@@ -51,10 +52,10 @@ const Products = () => {
         ])
     }, [data])
 
-    let handleSubcata = (item) =>{
-        console.log(item);
+    let handleSubcata = (citem) => {
+        let categoryFilter = data.filter((item) => item.category == citem)
+        setCategorySearchfilter(categoryFilter)
     }
-
 
 
 
@@ -73,7 +74,7 @@ const Products = () => {
                                 {catshow &&
                                     <ul >
                                         {Category.map((item) => (
-                                            <li onClick={()=>handleSubcata(item)} className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>{item}</li>
+                                            <li onClick={() => handleSubcata(item)} className='font-sans lg:text-[16px] text-[12px] font-normal text-[#767676] lg:py-5 py-2 border-b-2 border-[#F0F0F0]'>{item}</li>
                                         ))}
                                     </ul>
                                 }
@@ -118,11 +119,11 @@ const Products = () => {
                             </div>
                         </div>
                         <div className="flex pt-[10px] justify-between flex-wrap">
-                            <Post allData={allData} />
+                            <Post allData={allData} categorySearchfilter={categorySearchfilter} />
                         </div>
                     </div>
                 </Flex>
-                <div className="text-center pb-[20px]">
+                <div className="lg:text-end pb-[20px]">
                     <PaginationArea pageNumber={pageNumber} paginate={paginate} currentpage={currentpage} prev={prev} next={next} />
                 </div>
             </Container>

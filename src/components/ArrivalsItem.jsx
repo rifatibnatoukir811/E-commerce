@@ -2,12 +2,21 @@ import React, { useContext } from 'react'
 import { CiHeart } from "react-icons/ci";
 import { TfiReload } from "react-icons/tfi";
 import { CiShoppingCart } from "react-icons/ci";
+import { useDispatch } from 'react-redux';
+import { addToCart } from './slice/productSlice';
+
 
 
 
 
 
 const ArrivalsItem = ({ item }) => {
+    let dispatch = useDispatch()
+
+
+    let handleAddTocart = (item) => {
+        dispatch(addToCart({ ...item, qun: 1 }))
+    }
     return (
         <div className="">
             <div className="lg:w-[98%] w-full px-4 py-5">
@@ -17,7 +26,7 @@ const ArrivalsItem = ({ item }) => {
                         <ul className='pr-5'>
                             <li className='flex justify-end items-center gap-x-4 font-sans text-[16px]'>Add to Wish List<CiHeart /></li>
                             <li className='flex justify-end items-center gap-x-4 font-sans text-[16px] py-3'>Compare<TfiReload /></li>
-                            <li className='flex justify-end items-center gap-x-4 font-sans text-[16px]'>Add to Cart<CiShoppingCart /></li>
+                            <li onClick={() => handleAddTocart(item)} className='flex justify-end items-center gap-x-4 font-sans text-[16px]'>Add to Cart<CiShoppingCart /></li>
                         </ul>
                     </div>
                     <div className="">

@@ -8,6 +8,7 @@ import { FaCaretDown } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import image from "../assets/Image.png"
 import { RxCross1 } from "react-icons/rx";
+import { useSelector } from 'react-redux';
 
 
 
@@ -15,6 +16,8 @@ import { RxCross1 } from "react-icons/rx";
 
 
 const Navbar = () => {
+    let data = useSelector((state) => state.product.cartItem)
+    let [show, setShow] = useState(false)
     let [menuShow, setmenuShow] = useState(false)
     let [userShow, setuserShow] = useState(false)
     let [accShow, setaccShow] = useState(false)
@@ -91,7 +94,16 @@ const Navbar = () => {
                             }
 
                             <div ref={userref} onClick={() => setuserShow(!userShow)} className="lg:pt-0 pt-3">
-                                <FaShoppingCart />
+                                <div className="relative text-[22px]">
+                                    <FaShoppingCart />
+                                    {data.length >0 ? 
+                                    <div className="absolute left-[9px] top-[-8px] h-[18px] w-[18px] rounded-full flex justify-center items-center bg-[#ad3b3b] text-[15px] text-white">
+                                    {data.length}
+                                </div>
+                                :
+                                ""
+                                }
+                                </div>
                             </div>
                             {userShow &&
                                 <div className="z-50 absolute top-[15px] right-0">
