@@ -9,6 +9,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import image from "../assets/Image.png"
 import { RxCross1 } from "react-icons/rx";
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 
@@ -126,7 +127,10 @@ const Navbar = () => {
                                             <h3>Subtotal: $44.00</h3>
                                         </div>
                                         <div className="flex mt-[20px] gap-x-3">
+                                            <Link to={"/cart"}>
                                             <div className="w-[148px] h-[50px] border border-black text-center duration-300 ease-in-out leading-[50px] hover:bg-black hover:text-white hover:rounded hover:text-[16px]">View Cart</div>
+
+                                            </Link>
                                             <div className="w-[148px] h-[50px] border border-black text-center duration-300 ease-in-out leading-[50px]  hover:bg-black hover:text-white hover:rounded hover:text-[16px]">Checkout</div>
                                         </div>
                                     </div>

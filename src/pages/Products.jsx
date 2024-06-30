@@ -8,6 +8,7 @@ import { RiLayoutGridLine } from "react-icons/ri";
 import { TiThList } from "react-icons/ti";
 import { IoMdArrowDropdownCircle } from "react-icons/io";
 import { RxCaretRight } from "react-icons/rx";
+import { Link } from 'react-router-dom'
 
 
 
@@ -20,6 +21,7 @@ const Products = () => {
     let [catshow, setCatShow] = useState(false)
     let [Category, setCategory] = useState([])
     let [categorySearchfilter, setCategorySearchfilter] = useState([])
+    let [multiList, showMultiList] = useState('showMultiList')
 
     let lastpage = currentpage * perpage
     let fristpage = lastpage - perpage
@@ -57,19 +59,24 @@ const Products = () => {
         setCategorySearchfilter(categoryFilter)
     }
 
+    let handleList = () => {
+        showMultiList("active");
+    }
 
 
     return (
-        <section className='pt-[120px]'>
+        <section className='pt-[30px] lg:py-0 px-4'>
             <Container>
                 <div className="">
                     <h2 className='text-black font-sans font-semibold text-[40px]'>Products</h2>
-                    <p className='flex items-center text-[#767676]'>Home <RxCaretRight />   Products</p>
+                    <p className='flex items-center text-[#767676]'>
+                        <Link to="/">Home</Link>
+                        <RxCaretRight />   Products</p>
                 </div>
-                <Flex >
-                    <div className="w-1/6 pt-[126px] pb-[60px]">
+                <div className='lg:flex'>
+                    <div className="lg:w-1/6 w-full pt-[20px]">
                         <div className="gap-x-[20px]">
-                            <div className="">
+                            <div className=''>
                                 <h2 onClick={() => setCatShow(!catshow)} className='font-sans lg:text-[17px] text-[12px] font-bold text-[#262626] lg:pb-6 py-2 '>Shop by Category</h2>
                                 {catshow &&
                                     <ul >
@@ -82,15 +89,15 @@ const Products = () => {
 
                         </div>
                     </div>
-                    <div className="w-5/6 pt-[126px] pb-[60px]">
+                    <div className="lg:w-5/6 w-full lg:pt-[20px] pt-6 pb-[60px]">
                         <div className="flex justify-between items-center px-4">
                             <div className="flex gap-x-3">
-                                <div className="h-[40px] w-[40px] flex justify-center cursor-pointer items-center text-[#737373] hover:text-white duration-300 ease-in-out hover:bg-black border-[1px] border-[#F0F0F0] text-[20px]"><RiLayoutGridLine /></div>
-                                <div className="h-[40px] w-[40px] flex justify-center cursor-pointer text-[#737373] items-center hover:text-white duration-300 ease-in-out hover:bg-black border-[1px] border-[#F0F0F0] text-[20px]"><TiThList /></div>
+                                <div onClick={()=>showMultiList("")} className="h-[40px] w-[40px] flex justify-center cursor-pointer items-center text-[#737373] hover:text-white duration-300 ease-in-out hover:bg-black border-[1px] border-[#F0F0F0] text-[20px]"><RiLayoutGridLine /></div>
+                                <div onClick={handleList} className="h-[40px] w-[40px] flex justify-center cursor-pointer text-[#737373] items-center hover:text-white duration-300 ease-in-out hover:bg-black border-[1px] border-[#F0F0F0] text-[20px]"><TiThList /></div>
                             </div>
-                            <div className="w-[310px] h-[36px] flex items-center">
+                            <div className="lg:w-[310px] lg:h-[36px] lg:flex items-center text-center">
                                 <label htmlFor="">Sort by:</label>
-                                <select className='border-[#F0F0F0] border-[1px] w-[239px] h-[36px] ml-2 text-start px-2'>
+                                <select className='border-[#F0F0F0] border-[1px] lg:w-[239px] lg:h-[36px] ml-2 text-start px-2'>
                                     <option className='gap-x-[20px]' value="">
                                         <div className="flex justify-between">
                                             <p>Featured</p>
@@ -102,10 +109,10 @@ const Products = () => {
                                     <option value="">Category</option>
                                 </select>
                             </div>
-                            <div className="">
+                            <div className="text-center">
                                 <label htmlFor="">Show:</label>
-                                <select className='border-[#F0F0F0] border-[1px] w-[139px] h-[36px] ml-2 text-start px-2'>
-                                    <option value="flex">
+                                <select className='border-[#F0F0F0] border-[1px] lg:w-[139px] lg:h-[36px] ml-2 text-start px-2'>
+                                    <option value="lg:flex">
                                         <div className="">
                                             <p>36</p>
                                             <div className="">
@@ -118,12 +125,10 @@ const Products = () => {
                                 </select>
                             </div>
                         </div>
-                        <div className="flex pt-[10px] justify-between flex-wrap">
-                            <Post allData={allData} categorySearchfilter={categorySearchfilter} />
-                        </div>
+                        <Post allData={allData} categorySearchfilter={categorySearchfilter} multiList={multiList} />
                     </div>
-                </Flex>
-                <div className="lg:text-end pb-[20px]">
+                </div>
+                <div className="lg:text-end text-center pb-[20px]">
                     <PaginationArea pageNumber={pageNumber} paginate={paginate} currentpage={currentpage} prev={prev} next={next} />
                 </div>
             </Container>

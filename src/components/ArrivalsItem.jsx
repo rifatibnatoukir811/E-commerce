@@ -4,6 +4,7 @@ import { TfiReload } from "react-icons/tfi";
 import { CiShoppingCart } from "react-icons/ci";
 import { useDispatch } from 'react-redux';
 import { addToCart } from './slice/productSlice';
+import { Link } from 'react-router-dom';
 
 
 
@@ -26,7 +27,9 @@ const ArrivalsItem = ({ item }) => {
                         <ul className='pr-5'>
                             <li className='flex justify-end items-center gap-x-4 font-sans text-[16px]'>Add to Wish List<CiHeart /></li>
                             <li className='flex justify-end items-center gap-x-4 font-sans text-[16px] py-3'>Compare<TfiReload /></li>
+                            <Link to="#">
                             <li onClick={() => handleAddTocart(item)} className='flex justify-end items-center gap-x-4 font-sans text-[16px]'>Add to Cart<CiShoppingCart /></li>
+                            </Link>
                         </ul>
                     </div>
                     <div className="">

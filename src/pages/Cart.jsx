@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { productDecrement, productIncrement, removeProduct } from '../components/slice/productSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 
 const Cart = () => {
@@ -41,7 +41,7 @@ const Cart = () => {
         <section className='py-[60px]'>
             <Container>
                 <h2 className='text-[25px] font-bold text-[#262626]'>Cart</h2>
-                <p className='text-[8px] font-normal text-[#6D6D60]'>Home &gt; Cart</p>
+                <p className='text-[8px] font-normal text-[#6D6D60]'> <Link to={"/"}>Home</Link> &gt; Cart</p>
                 <Flex className='justify-between py-[34px] px-4 bg-[#F5F5F3] mt-4'>
                     <div className="w-[40%] font-sans font-bold">Product</div>
                     <div className="w-[15%] font-sans font-bold text-center">Price</div>
@@ -50,7 +50,7 @@ const Cart = () => {
                 </Flex>
                 {data.map((item, index) => (
                     <Flex className='justify-between py-[34px] px-4 mt-2 items-center'>
-                        <div className="w-[40%] flex items-center gap-x-[60px]">
+                        <div className="lg:w-[40%] w-full lg:flex items-center gap-x-[60px]">
                             <div className="" onClick={() => handleRemove(index)}>
                                 <RxCross2 className='font-sans font-semibold' />
                             </div>
@@ -68,7 +68,7 @@ const Cart = () => {
                             <div className='flex justify-center gap-x-[29px]'>
                                 <div className='w-[150px] flex justify-around'>
                                     <div className="" onClick={() => handledecrement(index)}>-</div>
-                                    <div className="font-sans font-semibold">{item.qun}</div>
+                                    <div className="font-sans font-semibold">{item.price}</div>
                                     <div onClick={() => handleIncrement(index)} className="">+</div>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@ const Cart = () => {
                     <div className="justify-between ">
                         <div className="flex justify-between items-center" >
                             <div className="border-[1px] border-[#EAEAEA]">
-                                <select className='w-[250px] h-[50px] border-none'>
+                                <select className='lg:w-[250px] w-[70px] lg:h-[50px] h-[20px] border-none'>
                                     <option className='font-sans text-[16px] font-bold text-black' value="">SIZE</option>
                                     <option className='font-sans text-[10px] text-black' value="">One</option>
                                     <option className='font-sans text-[10px] text-black' value="">Two</option>

@@ -68,7 +68,6 @@ const ProductDetails = ({ }) => {
                             <div>
                                 <p className='text-secondary text-xl font-bold'>${singleData.price}</p>
                             </div>
-                            {/* colour */}
                             <div className='flex gap-x-[53px] items-center mt-[20px] mb-[30px]'>
                                 <p>COLOR:</p>
                                 <div className='flex gap-x-4'>
@@ -79,8 +78,6 @@ const ProductDetails = ({ }) => {
                                     <div className='w-5 h-5 bg-[#D1F5EE] rounded-full hover:scale-[1.5] duration-300'></div>
                                 </div>
                             </div>
-                            {/* colour */}
-                            {/* size */}
                             <div className='flex gap-x-[76px] mb-[30px] items-center'>
                                 <p className='font-bold'>SIZE:</p>
                                 <div className='flex w-[139px] border-2 border-[#F0F0F0]'>
@@ -101,8 +98,6 @@ const ProductDetails = ({ }) => {
                                     </div>
                                 </div>
                             </div>
-                            {/* size */}
-                            {/* quantity */}
                             <div className='flex gap-x-[29px]'>
                                 <p>QUANTITY:</p>
                                 <div className='w-[139px] border-2 border-[#F0F0F0] flex justify-around'>
@@ -111,15 +106,12 @@ const ProductDetails = ({ }) => {
                                     <button>+</button>
                                 </div>
                             </div>
-                            {/* quantity */}
-                            {/* in stock */}
                             <div className='border-b-2 border-[#F0F0F0] mt-6 mb-[33px]'></div>
                             <div className='flex gap-x-7'>
                                 <p>STATUS:</p>
                                 <p>{singleData.stock}</p>
                             </div>
                             <div className='border-b-2 border-[#F0F0F0] mt-6 mb-[33px]'></div>
-                            {/* in stock */}
                             <div className='flex items-center gap-x-5'>
                                 <div className="w-[148px] h-[50px] border border-black text-center duration-300 ease-in-out leading-[50px] hover:bg-black hover:text-white hover:rounded hover:text-[16px]">Add to Wish List</div>
                                 <Link to="/cart" onClick={() => handleAddTocart(singleData)}>
