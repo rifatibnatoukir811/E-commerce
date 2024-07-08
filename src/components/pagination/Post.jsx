@@ -4,7 +4,6 @@ import ArrivalsItem from '../ArrivalsItem.jsx';
 
 
 const Post = ({ allData, categorySearchfilter, multiList }) => {
-    console.log(multiList);
 
     let [filterShow, setFilterShow] = useState([])
     let [catShow, setCatShow] = useState(true)

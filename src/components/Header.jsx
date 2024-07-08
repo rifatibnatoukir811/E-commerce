@@ -32,8 +32,8 @@ const Header = () => {
                                 <li className='font-sans text-[16px] lg:py-0 py-[10px] lg:text-[#767676] text-[#262626] duration-200  lg:hover:text-[#262626] hover:bg-white rounded text-center cursor-pointer'>
                                     <Link to="/Products">Shop</Link>
                                 </li>
-                                <li className='font-sans text-[16px] lg:py-0 py-[10px] lg:text-[#767676] text-[#262626] duration-200  lg:hover:text-[#262626] hover:bg-white rounded text-center cursor-pointer'>About</li>
-                                <li className='font-sans text-[16px] lg:py-0 py-[10px] lg:text-[#767676] text-[#262626] duration-200  lg:hover:text-[#262626] hover:bg-white rounded text-center cursor-pointer'>Contacts</li>
+                                <li className='font-sans text-[16px] lg:py-0 py-[10px] lg:text-[#767676] text-[#262626] duration-200  lg:hover:text-[#262626] hover:bg-white rounded text-center cursor-pointer'><Link to="/about">About</Link></li>
+                                <li className='font-sans text-[16px] lg:py-0 py-[10px] lg:text-[#767676] text-[#262626] duration-200  lg:hover:text-[#262626] hover:bg-white rounded text-center cursor-pointer'><Link to="/contact">Contact</Link></li>
                                 <li className='font-sans text-[16px] lg:py-0 py-[10px] lg:text-[#767676] text-[#262626] duration-200  lg:hover:text-[#262626] hover:bg-white rounded text-center cursor-pointer'>Journal</li>
                             </ul>
                         </div>
